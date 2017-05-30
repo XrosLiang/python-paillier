@@ -117,8 +117,8 @@ class PaillierPublicKey(object):
         Raises:
           TypeError: if plaintext is not an int.
         """
-        if not isinstance(plaintext, int):
-            raise TypeError('Expected int type plaintext but got: %s' %
+        if not isinstance(plaintext, long):
+            raise TypeError('Expected long type plaintext but got: %s' %
                             type(plaintext))
 
         if self.n - self.max_int <= plaintext < self.n:
@@ -336,8 +336,8 @@ class PaillierPrivateKey(object):
         Raises:
           TypeError: if ciphertext is not an int.
         """
-        if not isinstance(ciphertext, int):
-            raise TypeError('Expected ciphertext to be an int, not: %s' %
+        if not isinstance(ciphertext, long):
+            raise TypeError('Expected ciphertext to be an long, not: %s' %
                 type(ciphertext))
 
         decrypt_to_p = self.l_function(powmod(ciphertext, self.p-1, self.psquare), self.p) * self.hp % self.p
